@@ -2,7 +2,7 @@ boolean drawFrench = true;
 boolean drawSpanish = true; 
 boolean drawOther = true;
 boolean showTowers = true;
-boolean drawpeople = true;
+boolean drawAll = true;
 boolean pause;
 
 void keyPressed(){
@@ -11,9 +11,6 @@ void keyPressed(){
       //generates new random network
       key_n();
       break; 
-  case 'r':
-      key_r();
-      break;
   case 'f':
       drawFrench = !drawFrench;
       break;
@@ -24,14 +21,14 @@ void keyPressed(){
       drawOther = !drawOther;
       break;
   case 'a':
-      //toggles drawing of people the lines
-      drawpeople = !drawpeople;
-      if(drawpeople){
+      //toggles drawing of all the lines
+      drawAll = !drawAll;
+      if(drawAll){
       drawFrench = true;
       drawSpanish = true;
       drawOther = true;
       }
-      if(!drawpeople){
+      if(!drawAll){
       drawFrench = false;
       drawSpanish = false;
       drawOther = false;
@@ -49,17 +46,13 @@ void keyPressed(){
 }
 
 void key_n(){
-      people.clear();
+      all.clear();
+      french.clear();
+      spanish.clear();
+      other.clear();
       Nodes.clear();
       Network.clear();
-      generate_nodes();
       generate();
       analyzer();
-}
 
-void key_r(){
-      people.clear();
-      Network.clear();
-      generate();
-      analyzer();
 }
