@@ -26,12 +26,12 @@ This script uses two classes; Node and Edge
 
 //delay between loops (in milliseconds)
 int delay = 1000;
-//speed for the edges, you could also set this individupeopley
+//speed for the edges, you could also set this individually
 float increment = .0005;
 
 //numbers for generating network
-int numnodes = 5;
-int numedges = 16;
+int numnodes = 10;
+int numedges = 30;
 int numClicks;
 
 //duration of animation
@@ -46,13 +46,13 @@ void setup(){
  initialTime = millis();
  
  //generates the network
- generate_nodes();
  generate();
  analyzer();
  smooth();
 }
 
 void draw(){
+  println(needLoop);
   background(10);
   drawLegend();
   
@@ -66,7 +66,13 @@ void draw(){
   
   if(!pause){  
   if(drawOther){
-    drawNetwork(people);
+    drawNetwork(other);
+  }
+  if(drawFrench){
+    drawNetwork(french);
+  }
+  if(drawSpanish){
+    drawNetwork(spanish);
   }
   }
   
@@ -80,7 +86,13 @@ void draw(){
   
   if(pause){
     if(drawOther){
-      drawPaused(people);
+      drawPaused(other);
+    }
+    if(drawSpanish){
+      drawPaused(spanish);
+    }
+    if(drawFrench){
+      drawPaused(french);
     }
   }
   
