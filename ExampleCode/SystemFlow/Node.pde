@@ -39,34 +39,34 @@ public class Node{
      }   
 
   void analyze(){
-    for(int i = 0; i<people.size(); i++){
-            if(id == people.get(i).origin_id){
-                //println("I am origin", id, location, "for edge ", i, "with amount ", people.get(i).amount, "and type ", people.get(i).type);
-                edgeout.add(people.get(i));
-                total+=people.get(i).amount;
-                    if(people.get(i).type == 0){ //spansih
-                        spanishout+=people.get(i).amount;
+    for(int i = 0; i<all.size(); i++){
+            if(id == all.get(i).origin_id){
+                //println("I am origin", id, location, "for edge ", i, "with amount ", all.get(i).amount, "and type ", all.get(i).type);
+                edgeout.add(all.get(i));
+                total+=all.get(i).amount;
+                    if(all.get(i).type == 0){ //spansih
+                        spanishout+=all.get(i).amount;
                     }
-                    else if(people.get(i).type == 1){ //other
-                        otherout+=people.get(i).amount;
+                    else if(all.get(i).type == 1){ //other
+                        otherout+=all.get(i).amount;
                     }
                     else{
-                        frenchout+=people.get(i).amount;
+                        frenchout+=all.get(i).amount;
                     }
             }
-            if(id == people.get(i).destination_id){
-                //println("I am destination", id, location, "for edge ", i, "with amount ", people.get(i).amount, "and type ", people.get(i).type);
-                edgein.add(people.get(i));
-                total+=people.get(i).amount;
-                totalin+=people.get(i).amount;
-                 if(people.get(i).type == 0){ //spansih
-                        spanishin+=people.get(i).amount;
+            if(id == all.get(i).destination_id){
+                //println("I am destination", id, location, "for edge ", i, "with amount ", all.get(i).amount, "and type ", all.get(i).type);
+                edgein.add(all.get(i));
+                total+=all.get(i).amount;
+                totalin+=all.get(i).amount;
+                 if(all.get(i).type == 0){ //spansih
+                        spanishin+=all.get(i).amount;
                     }
-                    else if(people.get(i).type == 1){ //other
-                        otherin+=people.get(i).amount;
+                    else if(all.get(i).type == 1){ //other
+                        otherin+=all.get(i).amount;
                     }
                     else{
-                        frenchin+=people.get(i).amount;
+                        frenchin+=all.get(i).amount;
                     }
             }
         }
