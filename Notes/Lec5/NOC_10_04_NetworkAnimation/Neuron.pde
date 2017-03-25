@@ -53,6 +53,7 @@ class Neuron {
     // Brightness is mapped to sum
     float b = map(sum,0,1,255,0);
     fill(b);
+//    fill(#00ff00);
     ellipse(location.x, location.y, r, r);
     
     // Size shrinks down back to original dimensions

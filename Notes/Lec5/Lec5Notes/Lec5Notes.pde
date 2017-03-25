@@ -9,7 +9,6 @@ void setup(){
   size(800, 800); 
   smooth();
  
- /* 
   // Create the Network object
   network = new Network(width/2, height/2);
   ArrayList<Neuron>neurons = new ArrayList<Neuron>();
@@ -20,7 +19,7 @@ void setup(){
     neurons.add(neuron);
   }
   
-  //Connect them
+  //Connect them3
   for(int i = 0; i < neurons.size() - 1; i++){
     network.connect(neurons.get(i), neurons.get(i+1), 1);
   }
@@ -29,14 +28,59 @@ void setup(){
   for(int i = 0; i<neurons.size(); i++){
     network.addNeuron(neurons.get(i));
   }
-  */
 
 }
 
-void draw(){}
+void draw(){
+  background(255);
+  network.update();
+  network.display();
+  
+  if (frameCount % 30 == 0){
+     network.feedforward(random(1));
+ }
+}
 
 class Neuron{
+  //Making the list of what the neuron might need
+  PVector location;
+  ArrayList<Connection>connections;
+  float sum = 0;
+  float r = 32;
   
+  Neuron(float x, float y){
+    location = new PVector(x,y);
+    connections = new ArrayList<Connection>();
+  }
+  
+  void addConnection(Connection c){
+    //ArrayList.add(thing);
+    connections.add(c);
+  }
+ 
+  void feedforward(float input){
+    sum+=input;
+    if (sum > 1){
+      fire();
+      sum = 0;
+    }
+  }
+  
+  void fire(){
+    r = 64; 
+    for (Connection c : connections){
+      c.feedforward(sum);
+    }
+  }
+  
+  void display(){
+    stroke(0); //black outline
+    strokeWeight(1); //weight is 1
+    float b = map(sum, 0, 1, 255, 0); 
+    fill(b);
+    ellipse(location.x, location.y, r, r);
+    r = lerp(r, 32, 0.1);
+  }
   
 }
 
