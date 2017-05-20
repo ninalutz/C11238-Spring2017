@@ -15,7 +15,7 @@ class Ball
   color colour;
    
   float mass = 1.0; //1.0;
-  float gravity = 0.2;
+  float gravity = 0.8;
   float bounce = 1.0; // default = -0.6
    
   
